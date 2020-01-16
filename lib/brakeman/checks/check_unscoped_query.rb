@@ -14,7 +14,7 @@ class Brakeman::CheckUnscopedQuery < Brakeman::BaseCheck
     untenanted_models = active_record_models.keys.select do |name|
       next if tenant_models.include?(name)
       if model = active_record_models[name]
-        [:Marketplace, :Company, :User].none? do |tenant|
+        [:marketplace, :company, :user].none? do |tenant|
           model.association?(tenant)
         end
       else

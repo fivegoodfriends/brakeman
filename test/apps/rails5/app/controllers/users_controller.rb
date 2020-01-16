@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @users = User.all
 
     @things = Thing.all
+    @thing = Thing.find(params[:id])
   end
 
   # GET /users/1
