@@ -53,6 +53,6 @@ class Brakeman::CheckUnscopedQuery < Brakeman::BaseCheck
       :warning_code => :unscoped_query,
       :message      => msg("Unscoped query to ", msg_code("#{result[:target]}##{result[:method]}")),
       :code         => result[:call],
-      :confidence   => :weakness
+      :confidence   => :weak
   end
 end
