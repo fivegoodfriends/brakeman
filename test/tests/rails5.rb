@@ -762,17 +762,15 @@ class Rails5Tests < Minitest::Test
   end
 
   def test_unscoped_query
-    binding.pry
     assert_warning :type => :warning,
-      :warning_code => 82,
-      :fingerprint => "21a836b647ac118baf1a63e5fa4c219f8d600760b05ff9b8927c39a97ebf1dd1",
+      :warning_code => 999,
+      :fingerprint => "98be050e2bf3702e38d72e5339c5e8b67964e9444347363b20361fc0338731be",
       :warning_type => "Unscoped Query",
-      :line => 67,
-      :message => /^Unscoped\ call\ to\ User\#find/,
+      :line => 9,
+      :message => /^Unscoped\ query\ to/,
       :confidence => 2,
       :relative_path => "app/controllers/users_controller.rb",
-      :code => s(:call, s(:const, :User), :find, s(:call, s(:params), :[], s(:lit, :id))),
-      :user_input => s(:call, s(:params), :[], s(:lit, :id))
+      :code => s(:call, s(:const, :Thing), :all)
   end
 
   def test_reverse_tabnabbing
