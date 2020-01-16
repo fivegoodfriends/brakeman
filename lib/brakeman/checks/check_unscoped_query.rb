@@ -36,7 +36,7 @@ class Brakeman::CheckUnscopedQuery < Brakeman::BaseCheck
                                           :create_with, :distinct, :references, :none, :unscope, :optimizer_hints,
                                           :merge, :except, :only, :count, :average, :minimum, :maximum, :sum,
                                           :calculate, :annotate, :pluck, :pick, :ids],
-                              :targets => associated_model_names
+                              :targets => untenanted_models
 
     calls.each do |call|
       process_result call
@@ -53,7 +53,6 @@ class Brakeman::CheckUnscopedQuery < Brakeman::BaseCheck
       :warning_code => :unscoped_query,
       :message      => msg("Unscoped query to ", msg_code("#{result[:target]}##{result[:method]}")),
       :code         => result[:call],
-      :confidence   => :weak,
-      :user_input   => input
+      :confidence   => :weakness
   end
 end
